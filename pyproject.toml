@@ -1,7 +1,7 @@
 [project]
 name = "nic2markdown"
-version = "0.1.0"
-description = "Convert MkDocs Material HTML pages to GitHub-compatible Markdown"
+version = "0.2.0"
+description = "Convert documentation pages (MkDocs, ReadTheDocs, DeepWiki) to GitHub-compatible Markdown"
 readme = "README.md"
 authors = [
     { name = "frankshi", email = "401477930@qq.com" }

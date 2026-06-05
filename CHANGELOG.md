@@ -1,30 +1,29 @@
 # Changelog
 
-## [0.2.0] — 2026-05-18
+## [0.2.0] — 2026-06-05
 
 ### Added
-- **Sidebar navigation link extraction** (`-s` / `--sidebar` flag)
-  - Parses `<nav class="md-nav--primary">` for MkDocs Material
-  - Preserves hierarchy via `data-md-level` attribute
-  - Outputs as nested Markdown list under `## Sidebar Links`
-- **Framework-based architecture** with gateway routing
-  - `gateway.py`: framework detection → dispatch to appropriate converter
-  - `frameworks/base.py`: `BaseConverter` abstract interface (`detect`, `extract_article`, `convert`, `extract_sidebar_links`)
-  - `frameworks/mkdocs_material/`: all MkDocs Material logic isolated in one package
-  - Extensible registry: add new frameworks by implementing `BaseConverter`
-- New test suites: `test_gateway.py` (6 tests), `test_sidebar.py` (6 tests)
+- **Read the Docs (Sphinx)** framework support
+  - Detects `<meta name="readthedocs-addons-api-version">` signatures
+  - Extracts content from `<div role="main">`
+  - Converts Sphinx admonitions, `highlight-*` code blocks, `<span class="pre">` inline code
+  - Parses `toctree-lN` sidebar hierarchy
+- **DeepWiki** framework support
+  - Detects via `<script type="application/ld+json">` (publisher: DeepWiki)
+  - Extracts content anchored on `h1[data-header="true"]`
+  - Handles Mermaid bailout templates, heading copy-link buttons
+  - Parses right-sidebar TOC anchor links
+- **TECH.md** — standalone technical documentation (architecture, framework guide, test structure)
+- Project renamed to `technical-docs-fetch`
 
 ### Changed
-- **Default output directory** changed from `.` to `output/`
-- CLI rewritten to use gateway-based dispatch
-- `__init__.py` updated to re-export gateway and `MkdocsMaterialConverter`
-- Old top-level `validator.py` removed (migrated to `frameworks/mkdocs_material/validator.py`)
-- Old top-level `extractor.py` removed (migrated to `frameworks/mkdocs_material/extractor.py`)
-- Old top-level `converter.py` removed (migrated to `frameworks/mkdocs_material/converter.py`)
-- `MkdocsMaterialConverter.convert()` now a class method; old free function `convert()` deprecated
+- **Install scripts**: skill now installed to `~/.agents/skills/nic2markdown` (was `~/.config/agents/skills/nic2markdown`)
+- README rewritten: purpose-first layout, background moved to end
+- Gateway router cleaned up with `_CONVERTER_NAME_MAP` and per-framework version extraction
+- All install script and documentation URLs updated to `technical-docs-fetch`
 
-### Fixed
-- `base_url` parameter now defaults to `""` in `BaseConverter.convert()` and `MkdocsMaterialConverter.convert()`
+### Tests
+- 147 tests total (was 46): +49 ReadTheDocs, +46 DeepWiki, +4 gateway
 
 ---
 

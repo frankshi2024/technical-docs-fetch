@@ -5,7 +5,10 @@
 set -euo pipefail
 
 REPO="https://github.com/frankshi2024/technical-docs-fetch.git"
-SKILL_DIR="${HOME}/.agents/skills/nic2markdown"
+SKILL_DIRS=(
+    "${HOME}/.config/agents/skills/nic2markdown"
+    "${HOME}/.agents/skills/nic2markdown"
+)
 SKILL_URL="https://raw.githubusercontent.com/frankshi2024/technical-docs-fetch/main/skill/SKILL.md"
 
 echo "====================================="
@@ -24,9 +27,12 @@ echo "[1/2] Installing nic2markdown CLI (via uv tool install)..."
 uv tool install "git+${REPO}" --force
 
 echo ""
-echo "[2/2] Installing agent skill to ${SKILL_DIR} ..."
-mkdir -p "${SKILL_DIR}"
-curl -fsSL "${SKILL_URL}" -o "${SKILL_DIR}/SKILL.md"
+echo "[2/2] Installing agent skill..."
+for SKILL_DIR in "${SKILL_DIRS[@]}"; do
+    mkdir -p "${SKILL_DIR}"
+    curl -fsSL "${SKILL_URL}" -o "${SKILL_DIR}/SKILL.md"
+    echo "  → ${SKILL_DIR}/SKILL.md"
+done
 
 echo ""
 echo "====================================="

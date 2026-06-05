@@ -4,7 +4,10 @@
 $ErrorActionPreference = "Stop"
 
 $Repo = "https://gitee.com/frankshi2024/technical-docs-fetch.git"
-$SkillDir = "$env:USERPROFILE\.agents\skills\nic2markdown"
+$SkillDirs = @(
+    "$env:USERPROFILE\.config\agents\skills\nic2markdown",
+    "$env:USERPROFILE\.agents\skills\nic2markdown"
+)
 $SkillUrl = "https://gitee.com/frankshi2024/technical-docs-fetch/raw/main/skill/SKILL.md"
 
 Write-Host "====================================="
@@ -23,9 +26,12 @@ Write-Host "[1/2] Installing nic2markdown CLI (via uv tool install)..."
 uv tool install "git+$Repo" --force
 
 Write-Host ""
-Write-Host "[2/2] Installing agent skill to $SkillDir ..."
-New-Item -ItemType Directory -Force -Path $SkillDir | Out-Null
-Invoke-WebRequest -Uri $SkillUrl -OutFile "$SkillDir\SKILL.md"
+Write-Host "[2/2] Installing agent skill..."
+foreach ($SkillDir in $SkillDirs) {
+    New-Item -ItemType Directory -Force -Path $SkillDir | Out-Null
+    Invoke-WebRequest -Uri $SkillUrl -OutFile "$SkillDir\SKILL.md"
+    Write-Host "  -> $SkillDir\SKILL.md"
+}
 
 Write-Host ""
 Write-Host "====================================="

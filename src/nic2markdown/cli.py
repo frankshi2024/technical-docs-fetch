@@ -21,8 +21,8 @@ def main() -> None:
     )
     parser.add_argument(
         "-o", "--output-dir",
-        default="output",
-        help="Directory to write the output Markdown file (default: output/)",
+        default="technical-docs-fetch-output",
+        help="Directory to write the output Markdown file (default: technical-docs-fetch-output/)",
     )
     parser.add_argument(
         "-s", "--sidebar",
@@ -73,6 +73,12 @@ def main() -> None:
         # Step 6: Write
         out_path = write_markdown(markdown, url=final_url, output_dir=output_dir)
         print(f"\n[OK] Written to: {out_path}")
+
+        # When using the default output directory (no -o flag), print content
+        is_default_dir = "-o" not in sys.argv and "--output-dir" not in sys.argv
+        if is_default_dir:
+            print()
+            print(markdown)
 
     except UnsupportedFrameworkError as e:
         print(str(e), file=sys.stderr)

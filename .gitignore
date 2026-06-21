@@ -23,6 +23,7 @@ Thumbs.db
 
 # Output
 output/
+technical-docs-fetch-output/
 
 # Scratch / temp files
 .scratch/

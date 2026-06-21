@@ -48,7 +48,8 @@ iwr -useb https://gitee.com/frankshi2024/technical-docs-fetch/raw/main/install-g
 ### 使用
 
 ```bash
-# 基本转换 → output/<stem>.<yyyymmddhhmmss>.md
+# 基本转换 → technical-docs-fetch-output/<stem>.<yyyymmddhhmmss>.md
+# （不使用 -o 时，还会将内容直接打印到终端）
 technical-docs-fetch https://soc.ustc.edu.cn/COD/lab5/
 
 # 同时提取侧边栏导航链接

@@ -18,7 +18,8 @@ Supports **MkDocs Material**, **Read the Docs** (Sphinx), and **DeepWiki**.
 ## Usage
 
 ```bash
-# Basic conversion — output saved to output/<stem>.<yyyymmddhhmmss>.md
+# Basic conversion — output saved to technical-docs-fetch-output/<stem>.<yyyymmddhhmmss>.md
+# (when -o is not used, the content is also printed to stdout)
 technical-docs-fetch <url>
 
 # Also extract sidebar navigation links

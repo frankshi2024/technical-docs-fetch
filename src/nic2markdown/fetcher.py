@@ -2,7 +2,7 @@
 
 import httpx
 
-USER_AGENT = "nic2markdown/0.1 (MkDocs to Markdown converter)"
+USER_AGENT = "technical-docs-fetch/0.2 (documentation page to Markdown converter)"
 DEFAULT_TIMEOUT = 30.0
 
 

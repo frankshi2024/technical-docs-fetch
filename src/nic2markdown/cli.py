@@ -1,4 +1,4 @@
-"""CLI entry point for nic2markdown."""
+"""CLI entry point for technical-docs-fetch."""
 
 import argparse
 import sys
@@ -12,8 +12,8 @@ from .writer import write_markdown
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        prog="nic2markdown",
-        description="Convert MkDocs Material HTML pages to GitHub-compatible Markdown.",
+        prog="technical-docs-fetch",
+        description="Convert documentation pages (MkDocs, Read the Docs, DeepWiki) to GitHub-compatible Markdown.",
     )
     parser.add_argument(
         "url",

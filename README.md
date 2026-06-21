@@ -49,22 +49,22 @@ iwr -useb https://gitee.com/frankshi2024/technical-docs-fetch/raw/main/install-g
 
 ```bash
 # 基本转换 → output/<stem>.<yyyymmddhhmmss>.md
-nic2markdown https://soc.ustc.edu.cn/COD/lab5/
+technical-docs-fetch https://soc.ustc.edu.cn/COD/lab5/
 
 # 同时提取侧边栏导航链接
-nic2markdown https://soc.ustc.edu.cn/COD/lab5/ -s
+technical-docs-fetch https://soc.ustc.edu.cn/COD/lab5/ -s
 
 # 指定输出目录
-nic2markdown https://soc.ustc.edu.cn/Digital/2025/lab1/intro/ -o ./notes -s
+technical-docs-fetch https://soc.ustc.edu.cn/Digital/2025/lab1/intro/ -o ./notes -s
 
 # Read the Docs 页面
-nic2markdown https://docs.readthedocs.com/platform/stable/config-file/v2.html -s
+technical-docs-fetch https://docs.readthedocs.com/platform/stable/config-file/v2.html -s
 
 # DeepWiki 页面
-nic2markdown https://deepwiki.com/microsoft/vscode -s
+technical-docs-fetch https://deepwiki.com/microsoft/vscode -s
 
 # 不支持的框架 → 报错退出
-nic2markdown https://example.com
+technical-docs-fetch https://example.com
 # Error: Unsupported framework.
 ```
 

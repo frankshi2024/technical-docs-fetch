@@ -1,5 +1,5 @@
 ---
-name: nic2markdown
+name: technical-docs-fetch
 description: |
   Convert documentation pages (MkDocs Material, Read the Docs / Sphinx, 
   DeepWiki) to GitHub-compatible Markdown. Use this skill whenever the 
@@ -8,7 +8,7 @@ description: |
   is token-heavy and error-prone.
 ---
 
-# nic2markdown
+# technical-docs-fetch
 
 Convert documentation pages into clean GitHub-Flavored Markdown —
 ideal for human reading and agent consumption.
@@ -19,13 +19,13 @@ Supports **MkDocs Material**, **Read the Docs** (Sphinx), and **DeepWiki**.
 
 ```bash
 # Basic conversion — output saved to output/<stem>.<yyyymmddhhmmss>.md
-nic2markdown <url>
+technical-docs-fetch <url>
 
 # Also extract sidebar navigation links
-nic2markdown <url> -s
+technical-docs-fetch <url> -s
 
 # Custom output directory
-nic2markdown <url> -o ./my-notes
+technical-docs-fetch <url> -o ./my-notes
 ```
 
 ## What it handles
@@ -40,7 +40,7 @@ nic2markdown <url> -o ./my-notes
 ## Health check
 
 ```bash
-nic2markdown --help
+technical-docs-fetch --help
 ```
 
 ## Supported frameworks
